@@ -1,0 +1,340 @@
+*{
+    box-sizing: inherit;
+}
+html{
+    font-family: 'Roboto', sans-serif;
+}
+.header{
+    height: 500px;
+}
+.header_top{
+    height: 120px;
+    background-color: #5c8465;
+}
+.nav{
+    display: flex;
+    justify-content: space-between;
+    height: 120px;
+    padding: 10px;
+}
+#logo_nav{
+    background-color: white;
+    padding: 10px;
+    height: 100px;
+    width: 100px;
+}
+.navlist{
+    margin: 0;
+    height: 100px;
+    padding: 0;
+    padding-left: 50px;
+    padding-right: 50px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.navitem{
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.navlink{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.navitem,.navlink{
+    height: 40px;
+    background-color: #72a17e;
+    display: inline-block;
+    text-align:center;
+    color: white;
+    line-height: 40px;
+}
+.mainmenubtn {
+    margin: 0px 5px 0px 5px;
+    height: 40px;
+    background-color: #72a17e;
+    display: inline-block;
+    text-align:center;
+    color: white;
+    line-height: 40px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-child {
+    margin-top: 110px;
+    display: none;
+    background-color: #6b9876;
+    min-width: 150px;
+}
+.dropdown-child a {
+    color: white;
+    padding: 20px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown:hover .dropdown-child {
+    display: block;
+}
+.banner{
+    height: 650px;
+    background-image: url(/Project/Data/banner.png);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 100% auto;
+}
+#banner_head{
+    width: 100%;
+}
+.container{
+    height: 100%;
+    background-color: #ffffff;
+}
+.container_body{
+    padding-left: 35px !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.item_truyen{
+    display: flex;
+    width: 500px;
+    height: 200px;
+}
+.listtruyen_pic,.listtruyen_text{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    margin-top: 40px;
+}
+.listtruyen_pic{
+    margin-right: 10px;
+}
+.anh_truyen{
+    height: 150px;
+    width: 100px;
+}
+.chitiet_truyen{
+    width: 800px;
+    margin: 35px;
+    margin-left: 0px !important;
+    display: flex;
+}
+.chitiet_listpic,.chitiet_listtext{
+    padding: 0;
+}
+.chitiet_listtext{
+    margin-left: 40px;
+}
+.anh_chitiet{
+    height: 250px;
+    width: 150px;
+}
+.theloai_list{
+    display: flex;
+    flex-wrap: wrap;
+}
+.search_theloai{
+    margin-top: 20px;
+}
+.form_search{
+    margin: 35px;
+    margin-left: 0;
+    width: 1075px;
+}
+.item_search{
+    display: inline-block;
+    width: 50%;
+}
+#loctruyen{
+    margin-top: 20px;
+    padding: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 7.5%;
+    border-width: 0;
+    background-color: #007bff;
+    color: white;
+}
+.form__login{
+    margin: 50px;
+    width: 500px;
+    height: 300px;
+}
+.form__register{
+    margin: 50px;
+    width: 500px;
+    height: 300px;
+}
+.form__error{
+    padding: 13px;
+    text-align: center;
+    margin-left: 0 !important;
+    margin: 10px;
+    height: 50px;
+    background-color: #5c8465;
+    color: #ffffff;
+    font-weight: 700;
+}
+.item_tutruyen{
+    width: 50%;
+    margin-top: 35px;
+    display: flex;
+}
+.pic_tutruyen{
+    height: 250px;
+    width: 150px;
+}
+.tutruyen_text{
+    list-style: none;
+}
+.tutruyen_listpic{
+    padding: 0;
+}
+.tutruyen_listtext{
+    padding-right: 40px;
+}
+.them_truyen{
+    width: 210px;
+    background-color: #5c8465;
+}
+.box_themtruyen{
+    margin-top: 35px;
+    width: 210px;
+}
+.box_1,.box_2{
+    width: 210px;
+}
+.button_dangky{
+    font-weight: 700;
+    margin-top: 15px;
+    color: white;
+    padding: 13px;
+    text-align: center;
+    margin-left: 0 !important;
+    margin: 10px;
+    height: 50px;
+    background-color: #5c8465;
+}
+.container-lg{
+    height: 100%;
+    background-color: #ffffff;
+}
+.main_body{
+    display: flex;
+    justify-content: center;
+}
+.main_container{
+    display: block;
+}
+.manga_title{
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+    height: 40px;
+    margin-top: 15px !important;
+}
+.return_home{
+    display: flex;
+    justify-content: left;
+}
+.chuong_truoc{
+    display: flex;
+    justify-content: center;
+}
+.chuong_sau{
+    display: flex;
+    justify-content: right;
+}
+.submit_comment{
+    height: 50px;
+    background-color: #72a17e;
+    margin-bottom: 15px !important;
+}
+.comment_list{
+    margin-bottom: 15px !important;
+}
+.quanly_tk{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 20px;
+    width: 1075px;
+    border-style: ridge;
+}
+.footertop{
+    display: flex;
+    justify-content: space-between;
+    height: 250px;
+    background-image: url("/Project/Data/footer.png");
+    background-size: 100% 250px;
+}
+.footlist{
+    margin-left: 50px;
+    margin-right: 50px;
+    list-style: none;
+    width: 50%;
+}
+.footerbot{
+    height: 50px;
+    background-color: #5c8465;
+    color: white;
+    text-align: center;
+}
+#footer_line{
+    padding-top: 15.5px;
+    padding-bottom: 15.5px;
+    line-height: 19px;
+}
+.foottitle{
+    color: #6b9876;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+.footnd{
+    font-size: 16px;
+}
+#phan_trang_1{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+#phan_trang{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+.phantrang_list{
+    padding: 10px;
+    background-color: #72a17e;
+    color: white;
+}
+.khung_phantrang{
+    margin-top: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+.maso1{
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #72a17e;
+    color: #ffffff;
+}
+#search_user{
+    margin-top: 20px;
+}
+.khung_themtruyen{
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+.thongbao_truyen{
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 25px;
+    background-color: #72a17e;
+    color: #ffffff;
+}

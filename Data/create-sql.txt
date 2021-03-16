@@ -1,0 +1,270 @@
+CREATE TABLE Truyen(
+	Id char(4) NOT NULL,
+	TenTruyen nvarchar(50) NOT NULL,
+	TacGia nvarchar(50) NOT NULL,
+	HinhAnh nvarchar(50) NOT NULL,
+	PRIMARY KEY (Id)
+)
+
+CREATE TABLE TaiKhoan(
+	TenTaiKhoan varchar(20) NOT NULL,
+	MatKhau varchar(100) NOT NULL,
+	PRIMARY KEY (TenTaiKhoan)
+)
+
+CREATE TABLE TuTruyen(
+	TenTaiKhoan varchar(20) NOT NULL,
+	Id char(4) NOT NULL,
+	PRIMARY KEY (TenTaiKhoan,Id),
+	FOREIGN KEY (TenTaiKhoan) REFERENCES TaiKhoan(TenTaiKhoan) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (Id) REFERENCES Truyen(Id) ON UPDATE CASCADE ON DELETE CASCADE
+)
+
+CREATE TABLE Admin(
+	TenTaiKhoan varchar(20) NOT NULL,
+	FOREIGN KEY (TenTaiKhoan) REFERENCES TaiKhoan(TenTaiKhoan) ON UPDATE CASCADE ON DELETE CASCADE
+)
+
+
+INSERT INTO Admin VALUES('admin')
+
+CREATE TABLE TheLoai(
+	TenTheLoai nvarchar(50) NOT NULL PRIMARY KEY
+)
+
+CREATE TABLE BinhLuan(
+	ThoiGian int NOT NULL,
+	TenTaiKhoan varchar(20) NOT NULL,
+	Id char(4) NOT NULL,
+	BinhLuan nvarchar(300) NOT NULL,
+	PRIMARY KEY (ThoiGian,TenTaiKhoan,Id),
+	FOREIGN KEY (TenTaiKhoan) REFERENCES TaiKhoan(TenTaiKhoan) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (Id) REFERENCES Truyen(Id) ON UPDATE CASCADE ON DELETE CASCADE
+)
+
+CREATE TABLE CamBinhLuan(
+	TenTaiKhoan varchar(20) NOT NULL,
+	FOREIGN KEY (TenTaiKhoan) REFERENCES TaiKhoan(TenTaiKhoan) ON UPDATE CASCADE ON DELETE CASCADE
+)
+
+CREATE TABLE DangDoc(
+	Id char(4) NOT NULL,
+	TenTaiKhoan varchar(20) NOT NULL,
+	SoChuong smallint NOT NULL,
+	FOREIGN KEY (TenTaiKhoan) REFERENCES TaiKhoan(TenTaiKhoan) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (Id) REFERENCES Truyen(Id) ON UPDATE CASCADE ON DELETE CASCADE
+)
+
+CREATE TABLE TheLoaiTruyen(
+	Id char(4) NOT NULL,
+	TenTheLoai nvarchar(50) NOT NULL,
+	PRIMARY KEY (Id,TenTheLoai),
+	FOREIGN KEY (Id) REFERENCES Truyen(Id) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (TenTheLoai) REFERENCES TheLoai(TenTheLoai) ON UPDATE CASCADE ON DELETE CASCADE
+)
+
+
+INSERT INTO TheLoai VALUES (N'Đô Thị'),(N'Huyền Huyễn'),(N'Xuyên Không'),(N'Tiên Hiệp'),(N'Đồng Nhân'),(N'Kiếm Hiệp'),(N'Kì Ảo'),(N'Võng Du'),
+(N'Lịch Sử'),(N'Khoa Huyễn'),(N'Linh Dị'),(N'Mạt Thế'),(N'Trọng Sinh'),(N'Dị Giới')
+
+INSERT INTO Truyen VALUES ('S001',N'Nhất Niệm Vĩnh Hằng',N'Nhĩ Căn','/img/001.jpg'),
+('S002',N'Đế Bá',N'Yếm Bút Tiên Sinh','/img/002.jpg'),
+('S003',N'Đấu Phá Thương Khung',N'Thiên Tằm Thổ Đậu','/img/003.jpg'),
+('S004',N'Linh Xa',N'Tam Cảo Học Sinh','/img/004.jpg'),
+('S005',N'Từ Hôm Nay Bắt Đầu Không Làm Ma Đầu',N'Nguyên Anh Sơ Kỳ','/img/005.jpg'),
+('S006',N'Đô Thị Chi Bất Tử Thiên Tôn',N'Manh Manh Đát Tiểu Mập','/img/006.jpg'),
+('S007',N'Vũ Luyện Điên Phong',N'Mạc Mặc','/img/007.jpg'),
+('S008',N'Trọng Sinh Tối Cường Tinh Đế',N'Cực Địa Phong Nhận','/img/008.jpg'),
+('S009',N'Vạn Tộc Chi Kiếp',N'Lão Ưng Cật Tiểu Kê','/img/009.jpg'),
+('S010',N'Vũ Thần Chúa Tể',N'Ám Ma Sư','/img/010.jpg'),
+('S011',N'Thứ Tộc Vô Danh',N'Vương Bất Quá Bá','/img/011.jpg'),
+('S012',N'Nguyên Tôn',N'Thiên Tằm Thổ Đậu','/img/012.jpg'),
+('S013',N'Tả Đạo Khuynh Thiên',N'Phong Lăng Thiên Hạ','/img/013.jpg'),
+('S014',N'Âm Hôn Lúc Nửa Đêm',N'Mộ Hi Ngôn','/img/014.jpg'),
+('S015',N'Cửu Vực Kiếm Đế',N'Thiệu Vũ','/img/015.jpg'),
+('S016',N'Lăng Thiên Kiếm Thần',N'Trúc Lâm Tiểu Hiền','/img/016.jpg'),
+('S017',N'Đại Chúa Tể',N'Thiên Tằm Thổ Đậu','/img/017.jpg'),
+('S018',N'Vũ Động Càn Khôn',N'Thiên Tằm Thổ Đậu','/img/018.jpg'),
+('S019',N'Toàn Cầu Cao Võ',N'Lão Ưng Cật Tiểu Kê','/img/019.jpg'),
+('S020',N'Quật Khởi Thức Tỉnh Thời Đại ',N' Cực Địa Phong Nhận ','/img/020.jpg'),
+('S021',N'Tối Cường Trang Bức Đả Kiểm Hệ Thống',N' Thái Thượng Bố Y','/img/021.jpg'),
+('S022',N'Phàm Nhân Tu Tiên Chi Tiên Giới Thiên',N' Vong Ngữ','/img/022.jpg'),
+('S023',N'Đại Mộng Chủ',N' Vong Ngữ ','/img/023.jpg'),
+('S024',N'Huyền Giới Chi Môn',N' Vong Ngữ ','/img/024.jpg'),
+('S025',N'Bạch Thủ Yêu Sư',N' Hắc Sơn Lão Quỷ ','/img/025.jpg'),
+('S026',N'Hệ Thống Siêu Cấp Tông Môn',N'Phi Tước Đoạt Bôi','/img/026.jpg'),
+('S027',N'Làm Ruộng Hệ Tu Tiên',N'Truy Mộng Huỳnh Hỏa Trùng','/img/027.jpg'),
+('S028',N'Đại Tùy Quốc Sư',N'Nhất Ngữ Phá Xuân Phong','/img/028.jpg'),
+('S029',N'Bá Đạo Đại Đế',N'Vương Giả Vinh Diệu','/img/029.jpg'),
+('S030',N'Mục Long Sư',N'Loạn','/img/030.jpg')
+
+
+INSERT INTO TheloaiTruyen VALUES 
+('S001',N'Tiên Hiệp'),
+('S001',N'Huyền Huyễn'),
+('S002',N'Huyền Huyễn'),
+('S002',N'Đồng Nhân'),
+('S002',N'Tiên Hiệp'),
+('S002',N'Kiếm Hiệp'),
+('S002',N'Khoa Huyễn'),
+('S003',N'Tiên Hiệp'), 
+('S003',N'Dị Giới'), 
+('S003',N'Huyền Huyễn'),
+('S004',N'Linh Dị'),
+('S005',N'Huyền Huyễn'), 
+('S005',N'Xuyên Không'),
+('S006',N'Tiên Hiệp'),
+('S007',N'Tiên Hiệp'),
+('S007',N'Kiếm Hiệp'), 
+('S007',N'Huyền Huyễn'),
+('S007',N'Võng Du'),
+('S008',N'Mạt Thế'), 
+('S008',N'Huyền Huyễn'), 
+('S008',N'Đô Thị'), 
+('S008',N'Trọng Sinh'),
+('S009',N'Đô Thị'), 
+('S009',N'Tiên Hiệp'),
+('S009',N'Đồng Nhân'),
+('S010',N'Tiên Hiệp'), 
+('S010',N'Đồng Nhân'), 
+('S010',N'Đô Thị'),
+('S011',N'Lịch Sử'),
+('S011',N'Kiếm Hiệp'),
+('S011',N'Kì Ảo'),
+('S012',N'Tiên Hiệp'),
+('S012',N'Huyền Huyễn'),
+('S012',N'Kì Ảo'), 
+('S012',N'Kiếm Hiệp'),
+('S013',N'Huyền Huyễn'),
+('S013',N'Khoa Huyễn'),
+('S013',N'Võng Du'),
+('S013',N'Kiếm Hiệp'), 
+('S013',N'Đồng Nhân'),
+('S014',N'Huyền Huyễn'), 
+('S014',N'Đô Thị'), 
+('S014',N'Linh Dị'),
+('S015',N'Huyền Huyễn'), 
+('S015',N'Khoa Huyễn'), 
+('S015',N'Đồng Nhân'),
+('S015',N'Kiếm Hiệp'),
+('S016',N'Huyền Huyễn'),
+('S016',N'Khoa Huyễn'),
+('S016',N'Kiếm Hiệp'),
+('S016',N'Tiên Hiệp'),
+('S016',N'Đồng Nhân'),
+('S017',N'Huyền Huyễn'),
+('S017',N'Tiên Hiệp'),
+('S017',N'Võng Du'),
+('S018',N'Huyền Huyễn'),
+('S018',N'Tiên Hiệp'),
+('S019',N'Đô Thị'),
+('S019',N'Xuyên Không'),
+('S019',N'Huyền Huyễn'),
+('S020',N'Đô Thị'),
+('S020',N'Huyền Huyễn'),
+('S021',N'Tiên Hiệp'),
+('S021',N'Huyền Huyễn'),
+('S021',N'Khoa Huyễn'),
+('S022',N'Huyền Huyễn'),
+('S022',N'Tiên Hiệp'),
+('S023',N'Tiên Hiệp'),
+('S023',N'Kiếm Hiệp'),
+('S023',N'Đô Thị'),
+('S023',N'Khoa Huyễn'),
+('S024',N'Tiên Hiệp'),
+('S024',N'Kiếm Hiệp'),
+('S025',N'Tiên Hiệp'),
+('S025',N'Đô Thị'),
+('S025',N'Võng Du'),
+('S025',N'Khoa Huyễn'),
+('S026',N'Huyền Huyễn'),
+('S026',N'Kiếm Hiệp '),
+('S026',N'Kì Ảo '),
+('S027',N'Huyền Huyễn'),
+('S027',N'Kiếm Hiệp'),
+('S027',N'Kì Ảo'),
+('S027',N'Tiên Hiệp'),
+('S028',N'Tiên Hiệp'),
+('S028',N'Đô Thị'),
+('S028',N'Huyền Huyễn'),
+('S028',N'Khoa Huyễn'),
+('S029',N'Tiên Hiệp'),
+('S029',N'Đô Thị'),
+('S029',N'Huyền Huyễn'),
+('S029',N'Khoa Huyễn'),
+('S030',N'Huyền Huyễn'),
+('S030',N'Tiên Hiệp'),
+('S030',N'Võng Du')
+
+/*INSERT INTO Truyen VALUES ('S001',N'Nhất Niệm Vĩnh Hằng',N'Nhĩ Căn','/img/001.jpg'),
+('S002',N'Đế Bá',N'Yếm Bút Tiên Sinh','/img/002.jpg',N'Huyền Huyễn, Đồng Nhân,Tiên Hiệp,Kiếm Hiệp,Khoa Huyễn'),
+('S003',N'Đấu Phá Thương Khung',N'Thiên Tằm Thổ Đậu','/img/003.jpg',N'Tiên Hiệp, Dị Giới, Huyền Huyễn'),
+('S004',N'Linh Xa',N'Tam Cảo Học Sinh','/img/004.jpg',N'Linh Dị'),
+('S005',N'Từ Hôm Nay Bắt Đầu Không Làm Ma Đầu',N'Nguyên Anh Sơ Kỳ','/img/005.jpg',N'Huyền Ảo, Xuyên Không'),
+('S006',N'Đô Thị Chi Bất Tử Thiên Tôn',N'Manh Manh Đát Tiểu Mập','/img/006.jpg',N'Tiên Hiệp'),
+('S007',N'Vũ Luyện Điên Phong',N'Mạc Mặc','/img/007.jpg',N'Tiên Hiệp, Kiếm Hiệp, Huyền Huyễn,Võng Du'),
+('S008',N'Trọng Sinh Tối Cường Tinh Đế',N'Cực Địa Phong Nhận','/img/008.jpg',N'Mạt Thế, Huyền Huyễn, Đô Thị, Trọng Sinh'),
+('S009',N'Vạn Tộc Chi Kiếp',N'Lão Ưng Cật Tiểu Kê','/img/009.jpg',N'Đô Thị, Tiên Hiệp,Đồng Nhân'),
+('S010',N'Vũ Thần Chúa Tể',N'Ám Ma Sư','/img/010.jpg',N'Tiêp Hiệp, Đồng Nhân, Đô Thị'),
+('S011',N'Thứ Tộc Vô Danh',N'Vương Bất Quá Bá','/img/011.jpg',N' Lịch Sử,Kiếm Hiệp,Kì Ảo'),
+('S012',N'Nguyên Tôn',N'Thiên Tằm Thổ Đậu','/img/012.jpg',N'Tiên Hiệp,Huyền Huyễn,Kì Ảo, Kiếm Hiệp'),
+('S013',N'Tả Đạo Khuynh Thiên',N'Phong Lăng Thiên Hạ','/img/013.jpg',N'Huyền Huyễn,Khoa Huyễn,Võng Du,Kiếm Hiệp, Đồng Nhân'),
+('S014',N' Âm Hôn Lúc Nửa Đêm',N'Mộ Hi Ngôn','/img/014.jpg',N'Huyền Huyễn, Đô Thị, Linh Dị'),
+('S015',N'Cửu Vực Kiếm Đế',N'Thiệu Vũ','/img/015.jpg',N'Huyền Huyễn, Khoa Huyễn, Đồng Nhân,Kiếm Hiệp'),
+('S016',N' Lăng Thiên Kiếm Thần ',N' Trúc Lâm Tiểu Hiền ','/img/016.jpg',N' Huyền Huyễn, Khoa Huyễn, Kiếm Hiệp, Tiên Hiệp, Đồng Nhân '),
+('S017',N' Đại Chúa Tể ',N' Thiên Tằm Thổ Đậu ','/img/017.jpg',N' Huyền Huyễn,Tiên Hiệp, Võng Du '),
+('S018',N' Vũ Động Càn Khôn ',N' Thiên Tằm Thổ Đậu ','/img/018.jpg',N' Huyền Huyễn,Tiên Hiệp'),
+('S019',N' Toàn Cầu Cao Võ ',N' Lão Ưng Cật Tiểu Kê ','/img/019.jpg',N' Đô Thị,Xuyên Không,Huyền Huyễn '),
+('S020',N' Quật Khởi Thức Tỉnh Thời Đại ',N' Cực Địa Phong Nhận ','/img/020.jpg',N' Đô Thị, Huyền Huyễn '),
+('S021',N' Tối Cường Trang Bức Đả Kiểm Hệ Thống ',N' Thái Thượng Bố Y','/img/021.jpg',N' Tiên Hiệp,Huyền Huyễn, Khoa Huyễn '),
+('S022',N' Phàm Nhân Tu Tiên Chi Tiên Giới Thiên ',N' Vong Ngữ','/img/022.jpg',N' Huyền Huyễn,Tiên Hiệp '),
+('S023',N' Đại Mộng Chủ ',N' Vong Ngữ ','/img/023.jpg',N' Tiên Hiệp, Kiếm Hiệp,Đô Thị, Khoa Huyễn '),
+('S024',N' Huyền Giới Chi Môn',N' Vong Ngữ ','/img/024.jpg',N' Tiên Hiệp, Kiếm Hiệp'),
+('S025',N' Bạch Thủ Yêu Sư ',N' Hắc Sơn Lão Quỷ ','/img/025.jpg',N' Tiên Hiệp, Đô Thị, Võng Du,Khoa Huyễn '),
+('S026',N' Hệ Thống Siêu Cấp Tông Môn ',N' Phi Tước Đoạt Bôi ','/img/026.jpg',N' Huyền Huyễn, Kiếm Hiệp, Kì Ảo '),
+('S027',N' Làm Ruộng Hệ Tu Tiên ',N' Truy Mộng Huỳnh Hỏa Trùng ','/img/027.jpg',N' Huyền Huyễn, Kiếm Hiệp, Kì Ảo,Tiên Hiệp '),
+('S028',N' Đại Tùy Quốc Sư ',N' Nhất Ngữ Phá Xuân Phong ','/img/028.jpg',N' Tiên Hiệp, Đô Thị, Huyền Huyễn, Khoa Huyễn '),
+('S029',N' Bá Đạo Đại Đế ',N' Vương Giả Vinh Diệu ','/img/029.jpg',N' Tiên Hiệp, Đô Thị, Huyền Huyễn, Khoa Huyễn '),
+('S030',N' Mục Long Sư ',N' Loạn ','/img/030.jpg',N' Huyền Huyễn,Tiên Hiệp, Võng Du ')*/
+
+
+-- tạo function chuyển có dấu thành không dấu
+
+CREATE FUNCTION [dbo].[fChuyenCoDauThanhKhongDau](@inputVar NVARCHAR(MAX) )
+RETURNS NVARCHAR(MAX)
+AS
+BEGIN    
+    IF (@inputVar IS NULL OR @inputVar = '')  RETURN ''
+   
+    DECLARE @RT NVARCHAR(MAX)
+    DECLARE @SIGN_CHARS NCHAR(256)
+    DECLARE @UNSIGN_CHARS NCHAR (256)
+ 
+    SET @SIGN_CHARS = N'ăâđêôơưàảãạáằẳẵặắầẩẫậấèẻẽẹéềểễệếìỉĩịíòỏõọóồổỗộốờởỡợớùủũụúừửữựứỳỷỹỵýĂÂĐÊÔƠƯÀẢÃẠÁẰẲẴẶẮẦẨẪẬẤÈẺẼẸÉỀỂỄỆẾÌỈĨỊÍÒỎÕỌÓỒỔỖỘỐỜỞỠỢỚÙỦŨỤÚỪỬỮỰỨỲỶỸỴÝ' + NCHAR(272) + NCHAR(208)
+    SET @UNSIGN_CHARS = N'aadeoouaaaaaaaaaaaaaaaeeeeeeeeeeiiiiiooooooooooooooouuuuuuuuuuyyyyyAADEOOUAAAAAAAAAAAAAAAEEEEEEEEEEIIIIIOOOOOOOOOOOOOOOUUUUUUUUUUYYYYYDD'
+ 
+    DECLARE @COUNTER int
+    DECLARE @COUNTER1 int
+   
+    SET @COUNTER = 1
+    WHILE (@COUNTER <= LEN(@inputVar))
+    BEGIN  
+        SET @COUNTER1 = 1
+        WHILE (@COUNTER1 <= LEN(@SIGN_CHARS) + 1)
+        BEGIN
+            IF UNICODE(SUBSTRING(@SIGN_CHARS, @COUNTER1,1)) = UNICODE(SUBSTRING(@inputVar,@COUNTER ,1))
+            BEGIN          
+                IF @COUNTER = 1
+                    SET @inputVar = SUBSTRING(@UNSIGN_CHARS, @COUNTER1,1) + SUBSTRING(@inputVar, @COUNTER+1,LEN(@inputVar)-1)      
+                ELSE
+                    SET @inputVar = SUBSTRING(@inputVar, 1, @COUNTER-1) +SUBSTRING(@UNSIGN_CHARS, @COUNTER1,1) + SUBSTRING(@inputVar, @COUNTER+1,LEN(@inputVar)- @COUNTER)
+                BREAK
+            END
+            SET @COUNTER1 = @COUNTER1 +1
+        END
+        SET @COUNTER = @COUNTER +1
+    END
+    -- SET @inputVar = replace(@inputVar,' ','-')
+    RETURN @inputVar
+END
+
